@@ -1,15 +1,16 @@
 <template>
   <div>
-      <h1> {{ article.title }} </h1>
-        <p>{{ article.content }}</p>
+    <router-link :to="{ name: 'article', params: { id: article.id} }">
+      <h1>{{ article?.title }}</h1>
+    </router-link>
+    <p>{{ article?.content }}</p>
   </div>
 </template>
-
 <script>
 export default {
-    props: {
-        article: Object
-    }
+  props: {
+    article: Object,
+  }
 };
 </script>
 

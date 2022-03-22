@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
 </script>
 
 <template>
@@ -19,6 +18,7 @@ import HelloWorld from "@/components/HelloWorld.vue";
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/articles">Articles</RouterLink>
+        <RouterLink to="/article">Ajouter un article</RouterLink>
       </nav>
     </div>
   </header>
@@ -50,7 +50,7 @@ header {
 a,
 .green {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
+  color: rgb(121, 121, 208);
   transition: 0.4s;
 }
 
