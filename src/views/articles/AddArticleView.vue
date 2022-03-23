@@ -5,9 +5,7 @@
 </template>
 
 <script>
-import AddArticle from "../components/forms/AddArticle.vue";
-
-
+import AddArticle from "../../components/forms/AddArticle.vue";
 export default {
   components: {
     AddArticle,

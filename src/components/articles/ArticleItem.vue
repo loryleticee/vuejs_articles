@@ -1,8 +1,6 @@
 <template>
   <div>
-    <router-link :to="{ name: 'article', params: { id: article.id} }">
-      <h1>{{ article?.title }}</h1>
-    </router-link>
+    <h1>{{ article?.title }}</h1>
     <p>{{ article?.content }}</p>
   </div>
 </template>
@@ -10,6 +8,15 @@
 export default {
   props: {
     article: Object,
+  },
+  methods: {
+    
+  },
+  mounted(){
+    
+  },
+  computed(){
+   
   }
 };
 </script>
