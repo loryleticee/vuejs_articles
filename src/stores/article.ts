@@ -5,14 +5,12 @@ export const useArticleStore = defineStore({
   state: () => ({
     article: {},
     articles: [],
+    toto: "",
   }),
   getters: {
-    // current_article: (state) => state.article,
-    // getArticles : (state) => state.articles
+    getArticles : (state) => state.articles
   },
   actions: {
-    // setArticle(article : Object) {
-    //   this.article = article;
-    // },
+   
   },
 });

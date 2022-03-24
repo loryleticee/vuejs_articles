@@ -24,6 +24,11 @@ const router = createRouter({
       name: "add_an_article",
       component: () => import("../views/articles/AddArticleView.vue"),
     },
+    {
+      path: "/account",
+      name: "account_home",
+      component: () => import("../views/users/AccountView.vue"),
+    },
   ],
 });
 

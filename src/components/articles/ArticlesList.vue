@@ -1,52 +1,48 @@
 <template>
   <div class="articles">
     <h1>Liste de mes articles</h1>
-    <div v-for="article in currentArticles" :key="article.id">
+    <div v-for="article in currentArticles" :key="article.id" class="color">
       <ArticleItem :article="article" />
       <router-link :to="{ name: 'article', params: { id: article.id } }">
-        Voir l'article
+        <button>Voir l'article</button>
       </router-link>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import ArticleItem from "./ArticleItem.vue";
-import { mapWritableState, mapState } from "pinia";
 import { useArticleStore } from "../../stores/article";
+import { computed, onMounted, ref } from "@vue/runtime-core";
 
-export default {
-  components: { ArticleItem },
-  mounted() {
-    this.getArticles.length > 0 || this.fetchArticles();
-  },
-  computed: {
-    ...mapWritableState(useArticleStore, {
-      setArticles: "articles",
-    }),
+const color = ref("#286234");
+const store_article = useArticleStore();
 
-    ...mapState(useArticleStore, {
-      getArticles: "articles",
-    }),
+onMounted(() => {
+  getArticles.length > 0 || fetchArticles();
+});
 
-    currentArticles() {
-      return this.getArticles;
-    },
-  },
-  methods: {
-    async fetchArticles() {
-      let articles = await fetch(
-        "https://api.blog.quidam.re/api/getArticles.php"
-      )
-        .then((response) => response.json())
-        .catch((e) => e);
+const currentArticles = computed(() => {
+  return store_article.$state.articles;
+});
 
-      if (articles instanceof Array) {
-        this.setArticles = articles;
-      }
-    },
-  },
+function changeColor() {
+  color = color === "#286234" ? "blue" : "red";
+};
+
+async function fetchArticles() {
+  let articles = await fetch("https://api.blog.quidam.re/api/getArticles.php")
+    .then((response) => response.json())
+    .catch((e) => e);
+
+  if (articles instanceof Array) {
+    store_article.$state.articles = articles;
+  }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.color {
+  color: v-bind(color);
+}
+</style>
